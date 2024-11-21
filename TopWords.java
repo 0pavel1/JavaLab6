@@ -5,7 +5,7 @@ import java.util.*;
 public class TopWords {
     public static void main(String[] args) {
         // указываем путь к файлу
-        String filePath = ".\\tet.txt";
+        String filePath = ".\\text.txt";
         // создаем объект File
         File file = new File(filePath);
         // создаем объект Scanner для чтения файла
@@ -22,7 +22,7 @@ public class TopWords {
         // читаем файл по словам и добавляем их в Map
         while (scanner.hasNext()) {
             String word = scanner.next().toLowerCase().replaceAll("[^a-zA-Zа-яА-Я]", ""); // Приводим к нижнему регистру и удаляем пунктуацию
-            if (!word.isEmpty()) {  // Пропускаем пустые строки
+            if (!word.isEmpty() && word.length() > 2) {  // Пропускаем пустые строки
                 wordCounts.put(word, wordCounts.getOrDefault(word, 0) + 1);
             }
         }
