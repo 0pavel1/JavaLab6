@@ -6,10 +6,16 @@ public class MyStack {
         stack.push(1);
         stack.push(2);
         stack.push(3);
+        System.out.println(stack.toString());
+        
         System.out.println(stack.pop()); 
         System.out.println(stack.peek());
         stack.push(4);
+
+        System.out.println(stack.toString());
         System.out.println(stack.pop());
+        
+        System.out.println(stack.toString());
     }
     public static class Stack<T> {
         private T[] data;
@@ -45,6 +51,20 @@ public class MyStack {
 
         public boolean isEmpty() {
             return size == 0;
+        }
+
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            sb.append("[");
+            for (int i = 0; i < size; i++) {
+                sb.append(data[i]);
+                if (i < size - 1) {
+                    sb.append(", ");
+                }
+            }
+            sb.append("]");
+            return sb.toString();
         }
     }
 }

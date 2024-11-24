@@ -21,8 +21,8 @@ public class TopWords {
 
         // читаем файл по словам и добавляем их в Map
         while (scanner.hasNext()) {
-            String word = scanner.next().toLowerCase().replaceAll("[^a-zA-Zа-яА-Я]", ""); // Приводим к нижнему регистру и удаляем пунктуацию
-            if (!word.isEmpty() && word.length() > 2) {  // Пропускаем пустые строки
+            String word = scanner.next().toLowerCase().replaceAll("[^a-zA-Zа-яА-Я]", ""); 
+            if (!word.isEmpty() && word.length() > 2) { 
                 wordCounts.put(word, wordCounts.getOrDefault(word, 0) + 1);
             }
         }

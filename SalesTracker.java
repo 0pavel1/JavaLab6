@@ -92,10 +92,22 @@ public class SalesTracker {
                     case 1:
                         System.out.print("Введите название товара: ");
                         String productName = scanner.nextLine();
-                        System.out.print("Введите цену товара: ");
-                        double price = scanner.nextDouble();
-                        scanner.nextLine();
-    
+
+                        double price = -1;
+                        while (price < 0) {
+                            System.out.print("Введите цену товара: ");
+                            try {
+                                price = scanner.nextDouble();
+                                scanner.nextLine();
+                                if (price < 0) {
+                                    System.out.println("Цена не может быть отрицательной.");
+                                }
+                            } catch (InputMismatchException e) {
+                                System.out.println("Неверный ввод цены. Попробуйте еще раз.");
+                                scanner.nextLine(); 
+                            }
+                        }
+                    
                         Product product = tracker.searchProduct(productName);
                         if (product == null){
                             product = new Product(productName, price);
@@ -115,7 +127,11 @@ public class SalesTracker {
     
                         product = tracker.searchProduct(productName1);
                         if(product != null){
-                            tracker.addSale(product, quantity);
+                            if (quantity < 0) {
+                                System.out.println("Количество не может быть отрицательным.");
+                            } else {
+                                tracker.addSale(product, quantity);
+                            }
                         }
                         else {
                             System.out.println("Товар не найден.");
